@@ -56,7 +56,11 @@ public class Room_1 : Premises
     {
         ClearButtonOnScreen();
 
-        GameController.GetInstance().GetButtonUp().SetActive(true);
+        if (GameController.GetInstance().GetCounterFlameRoom_1() == 2)
+        {
+            GameController.GetInstance().GetButtonUp().SetActive(true);
+        }
+        
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetPointToMove(pointForMoveUp);
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetNextRoom(GameController.GetInstance().roomController.room_2);
     }
