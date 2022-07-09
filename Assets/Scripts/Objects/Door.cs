@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : ObjectManager
 {
     private Animator anim_Door;
     private bool doorIsOpen = false;
@@ -18,7 +18,15 @@ public class Door : MonoBehaviour
         doorIsOpen = isOpen;
     }
 
-    private void OnMouseDown()
+    //private void OnMouseDown()
+    //{
+    //    if (!doorIsOpen)
+    //    {
+    //        Debug.Log("Так дверь не открыть!");
+    //    }
+    //}
+
+    public override void InteractionWithPlayer()
     {
         if (!doorIsOpen)
         {

@@ -12,9 +12,17 @@ public class GameController : MonoBehaviour
     private int counterFlameRoom_1 = 0;
     public int GetCounterFlameRoom_1() => counterFlameRoom_1;
 
+    private bool isPauseGameTime;
+    public bool IsPauseGameTime() => isPauseGameTime;
+    [SerializeField] private GameObject inventory;
+    public GameObject GetInventory() => inventory;
 
+    // получение ссылок на компоненты, которые находятся на объекте Game
     private NoteController noteController;
     public NoteController GetNoteController() => noteController = GetComponent<NoteController>();
+
+    private ChestController chestController;
+    public ChestController GetChestController() => chestController = GetComponent<ChestController>();
 
     // ссылки по работе с UI элементами и объектами
     [SerializeField] private GameObject mainUI;
@@ -50,5 +58,29 @@ public class GameController : MonoBehaviour
             door_FirstRoom.GetComponent<Door>().OpenDoor(false);
             GetButtonUp().SetActive(false);
         }
+    }
+
+    public void PauseGameTimeAndMainUI(bool value)
+    {
+        if (!value)
+        {
+            mainUI.SetActive(value);
+            Time.timeScale = 0.0f;
+            isPauseGameTime = true;
+        }
+        else
+        {
+            mainUI.SetActive(value);
+            Time.timeScale = 1.0f;
+            isPauseGameTime = false;
+        }
+    }
+
+    public void CloseUIPanel()
+    {
+        GameObject panel = GameObject.FindGameObjectWithTag("UI_Panel");
+        Destroy(panel);
+
+        PauseGameTimeAndMainUI(true);
     }
 }

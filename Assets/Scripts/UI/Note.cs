@@ -17,10 +17,6 @@ public class Note : MonoBehaviour
 
     private void CloseNote()
     {
-        GameObject note = GameObject.FindGameObjectWithTag("Note");
-        Destroy(note);
-
-        GameController.GetInstance().GetMainUI().SetActive(true);
-        Time.timeScale = 1.0f;
+        GameController.GetInstance().CloseUIPanel();
     }
 }

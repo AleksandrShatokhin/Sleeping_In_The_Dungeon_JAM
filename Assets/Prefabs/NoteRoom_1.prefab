@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2481291726455598897}
   m_Layer: 5
   m_Name: NoteRoom_1
-  m_TagString: Note
+  m_TagString: UI_Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

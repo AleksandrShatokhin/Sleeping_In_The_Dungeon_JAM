@@ -19,9 +19,36 @@ public class PlayerController : MonoBehaviour
         switcherRoom.Init(GameController.GetInstance().roomController.room_1);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            InteractionWithObjects();
+        }
+    }
+
     public void Movement(Vector3 pointForMove, Premises nextRoom)
     {
         agent_Player.SetDestination(pointForMove);
         switcherRoom.ChangeRoom(nextRoom);
+    }
+
+    public void InteractionWithObjects()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 15))
+        {
+            if (GameController.GetInstance().IsPauseGameTime())
+            {
+                return;
+            }
+
+            if (hit.transform.gameObject.layer == 3)
+            {
+                hit.transform.gameObject.GetComponent<ObjectManager>().InteractionWithPlayer();
+            }
+        }
     }
 }
