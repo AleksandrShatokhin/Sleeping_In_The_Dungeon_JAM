@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator_Player;
     private SwitcherRoom switcherRoom = new SwitcherRoom();
 
+    [SerializeField] private int health;
+    private bool isBlock = false;
+
     private void Start()
     {
         rb_Player = GetComponent<Rigidbody>();
@@ -51,4 +54,23 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void RotatePlayerOnEnemy(Transform enemyPosition)
+    {
+        transform.LookAt(enemyPosition, Vector3.up);
+    }
+
+    public void Attack(FightPanel panel)
+    {
+        animator_Player.SetTrigger("isAttack");
+
+        int damage = Random.Range(1, 20);
+        panel.ChangeHealthEnemy(damage);
+    }
+
+    public void Block(bool value) => isBlock = value;
+    public bool CheckIsBlock() => isBlock;
+
+    public int GetHealthPlayer() => health;
+    public void ChangeHealthPlayer(int health) => this.health += health;
 }

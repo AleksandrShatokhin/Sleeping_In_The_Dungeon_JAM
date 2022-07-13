@@ -76,6 +76,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void TurnOffMainUI() => mainUI.SetActive(false);
+    public void TurnOnMainUI() => mainUI.SetActive(true);
+
     public void CloseUIPanel()
     {
         GameObject panel = GameObject.FindGameObjectWithTag("UI_Panel");

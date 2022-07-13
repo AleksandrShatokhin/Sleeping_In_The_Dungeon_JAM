@@ -18,14 +18,6 @@ public class Door : ObjectManager
         doorIsOpen = isOpen;
     }
 
-    //private void OnMouseDown()
-    //{
-    //    if (!doorIsOpen)
-    //    {
-    //        Debug.Log("Так дверь не открыть!");
-    //    }
-    //}
-
     public override void InteractionWithPlayer()
     {
         if (!doorIsOpen)

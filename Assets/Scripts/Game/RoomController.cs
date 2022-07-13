@@ -27,6 +27,12 @@ public class RoomController
     public Room_7 room_7 = new Room_7();
     public Room_8 room_8 = new Room_8();
     public Room_9 room_9 = new Room_9();
+
+    public bool DeathEnemy_1 = false;
+    public bool DeathEnemy_2 = false;
+    public bool DeathEnemy_3 = false;
+    public bool DeathEnemy_4 = false;
+    public bool DeathEnemy_5 = false;
 }
 
 public class SwitcherRoom
@@ -60,7 +66,7 @@ public class Room_1 : Premises
         {
             GameController.GetInstance().GetButtonUp().SetActive(true);
         }
-        
+
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetPointToMove(pointForMoveUp);
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetNextRoom(GameController.GetInstance().roomController.room_2);
     }
@@ -78,7 +84,10 @@ public class Room_2 : Premises
 
     public override void Enter()
     {
-        GameController.GetInstance().GetButtonUp().SetActive(true);
+        if (GameController.GetInstance().roomController.DeathEnemy_1)
+        {
+            GameController.GetInstance().GetButtonUp().SetActive(true);
+        }
         GameController.GetInstance().GetButtonDown().SetActive(true);
 
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetPointToMove(pointForMoveUp);
@@ -103,9 +112,15 @@ public class Room_3 : Premises
 
     public override void Enter()
     {
-        GameController.GetInstance().GetButtonUp().SetActive(true);
+        if (GameController.GetInstance().roomController.DeathEnemy_2)
+        {
+            GameController.GetInstance().GetButtonUp().SetActive(true);
+        }
         GameController.GetInstance().GetButtonDown().SetActive(true);
-        GameController.GetInstance().GetButtonLeft().SetActive(true);
+        if (GameController.GetInstance().roomController.DeathEnemy_3)
+        {
+            GameController.GetInstance().GetButtonLeft().SetActive(true);
+        }
         GameController.GetInstance().GetButtonRight().SetActive(true);
 
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetPointToMove(pointForMoveUp);
@@ -130,7 +145,10 @@ public class Room_4 : Premises
 
     public override void Enter()
     {
-        GameController.GetInstance().GetButtonUp().SetActive(true);
+        if (GameController.GetInstance().roomController.DeathEnemy_4)
+        {
+            GameController.GetInstance().GetButtonUp().SetActive(true);
+        }
         GameController.GetInstance().GetButtonDown().SetActive(true);
 
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetPointToMove(pointForMoveUp);
@@ -194,7 +212,10 @@ public class Room_7 : Premises
 
     public override void Enter()
     {
-        GameController.GetInstance().GetButtonUp().SetActive(true);
+        if (GameController.GetInstance().roomController.DeathEnemy_5)
+        {
+            GameController.GetInstance().GetButtonUp().SetActive(true);
+        }
         GameController.GetInstance().GetButtonDown().SetActive(true);
         GameController.GetInstance().GetButtonRight().SetActive(true);
 

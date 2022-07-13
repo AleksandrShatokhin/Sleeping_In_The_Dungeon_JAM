@@ -27,21 +27,25 @@ public class MainUIController : MonoBehaviour
     private void PlayerMoveUp()
     {
         playerController.Movement(buttonPlayerMoveUp.GetComponent<ButtonMove>().GetPointToMove(), buttonPlayerMoveUp.GetComponent<ButtonMove>().GetNextRoom());
+        StartCoroutine(SwitchActiveButtonMove());
     }
 
     private void PlayerMoveDown()
     {
         playerController.Movement(buttonPlayerMoveDown.GetComponent<ButtonMove>().GetPointToMove(), buttonPlayerMoveDown.GetComponent<ButtonMove>().GetNextRoom());
+        StartCoroutine(SwitchActiveButtonMove());
     }
 
     private void PlayerMoveLeft()
     {
         playerController.Movement(buttonPlayerMoveLeft.GetComponent<ButtonMove>().GetPointToMove(), buttonPlayerMoveLeft.GetComponent<ButtonMove>().GetNextRoom());
+        StartCoroutine(SwitchActiveButtonMove());
     }
 
     private void PlayerMoveRight()
     {
         playerController.Movement(buttonPlayerMoveRight.GetComponent<ButtonMove>().GetPointToMove(), buttonPlayerMoveRight.GetComponent<ButtonMove>().GetNextRoom());
+        StartCoroutine(SwitchActiveButtonMove());
     }
 
     private void CallMenu()
@@ -53,5 +57,23 @@ public class MainUIController : MonoBehaviour
     private void CallInventory()
     {
         inventory.GetComponent<Animator>().SetBool("isOpen", true);
+    }
+
+    private void TurnOffButtonMove(bool value)
+    {
+        buttonPlayerMoveUp.image.enabled = value;
+        buttonPlayerMoveDown.image.enabled = value;
+        buttonPlayerMoveLeft.image.enabled = value;
+        buttonPlayerMoveRight.image.enabled = value;
+    }
+
+    private IEnumerator SwitchActiveButtonMove()
+    {
+        TurnOffButtonMove(false);
+
+        yield return new WaitForSeconds(1.8f);
+
+        TurnOffButtonMove(true);
+        StopAllCoroutines();
     }
 }
