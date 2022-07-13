@@ -18,8 +18,15 @@ public class Enemy : ObjectManager
 
     public override void InteractionWithPlayer()
     {
-        GameObject panel = Instantiate(fightPanel, fightPanel.transform.position, fightPanel.transform.rotation);
-        panel.GetComponent<FightPanel>().SetEnemy(this);
+        if (GameController.GetInstance().GetPlayerController().isBladeInHand)
+        {
+            GameObject panel = Instantiate(fightPanel, fightPanel.transform.position, fightPanel.transform.rotation);
+            panel.GetComponent<FightPanel>().SetEnemy(this);
+        }
+        else
+        {
+            Debug.Log("Прежде нужно найти оружие");
+        }
     }
 
     public bool Fighting(FightPanel panel)
@@ -32,7 +39,8 @@ public class Enemy : ObjectManager
             isDamage = true;
             anim_Enemy.SetTrigger("isAttack");
 
-            int damage = Random.Range(2, 10);
+            //int damage = Random.Range(2, 10);
+            int damage = Random.Range(50, 80);
             panel.ChangeHealthPlayer(damage);
         }
         else

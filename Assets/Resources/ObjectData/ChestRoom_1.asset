@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ChestRoom_1
   m_EditorClassIdentifier: 
   iconLeft: {fileID: 21300000, guid: 91f8fd907ccd28a4ca976f300478f973, type: 3}
-  iconRight: {fileID: 21300000, guid: 165d7edf3bf800644b964665dfa58c67, type: 3}
+  iconRight: {fileID: 21300000, guid: a837a13c362cedb41bcb22a2a54aafca, type: 3}

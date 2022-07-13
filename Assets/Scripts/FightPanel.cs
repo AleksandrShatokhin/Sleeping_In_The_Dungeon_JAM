@@ -7,6 +7,7 @@ public class FightPanel : MonoBehaviour
 {
     [SerializeField] private Button buttonAttack, buttonBlock, buttonExit;
     [SerializeField] private Slider healthPlayer, healthEnemy;
+    [SerializeField] private GameObject deathPanel;
 
     private PlayerController player;
     private Enemy enemy;
@@ -40,6 +41,13 @@ public class FightPanel : MonoBehaviour
             healthPlayer.value -= damage;
             player.ChangeHealthPlayer(-damage);
             player.Block(false);
+        }
+
+        if (healthPlayer.value <= 0)
+        {
+            Instantiate(deathPanel, deathPanel.transform.position, deathPanel.transform.rotation);
+            GameController.GetInstance().TurnOffMainUI();
+            Exit();
         }
     }
 

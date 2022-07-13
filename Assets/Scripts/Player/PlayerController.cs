@@ -13,6 +13,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int health;
     private bool isBlock = false;
 
+    public bool isBladeInHand { get; private set; } = false;
+    [SerializeField] private GameObject blade;
+    public void BladeActive()
+    {
+        blade.SetActive(true);
+        isBladeInHand = true;
+    }
+
     private void Start()
     {
         rb_Player = GetComponent<Rigidbody>();
@@ -65,6 +73,7 @@ public class PlayerController : MonoBehaviour
         animator_Player.SetTrigger("isAttack");
 
         int damage = Random.Range(1, 20);
+        //int damage = Random.Range(90, 100);
         panel.ChangeHealthEnemy(damage);
     }
 
