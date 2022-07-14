@@ -5,12 +5,18 @@ using UnityEngine;
 public class ChestController : MonoBehaviour
 {
     private Sprite iconLeft, iconRight;
-    public void SetCurrentIcon(Sprite iconLeft, Sprite iconRight)
+    private GameObject currentChest;
+
+    public void SetCurrentIcon(GameObject chest, Sprite iconLeft, Sprite iconRight)
     {
+        currentChest = chest;
+
         this.iconLeft = iconLeft;
         this.iconRight = iconRight;
     }
 
     public Sprite GetCurrentIconLeft() => this.iconLeft;
     public Sprite GetCurrentIconRight() => this.iconRight;
+
+    public GameObject GetCurrentChest() => currentChest;
 }

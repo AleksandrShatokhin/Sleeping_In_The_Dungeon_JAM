@@ -15,11 +15,15 @@ public class PlayerController : MonoBehaviour
 
     public bool isBladeInHand { get; private set; } = false;
     [SerializeField] private GameObject blade;
+    [SerializeField] private AudioClip audioTakeBladeInHand;
     public void BladeActive()
     {
         blade.SetActive(true);
         isBladeInHand = true;
+        GameController.GetInstance().PlayAudio(audioTakeBladeInHand);
     }
+
+    [SerializeField] private GameObject finalPanel;
 
     private void Start()
     {
@@ -34,7 +38,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            InteractionWithObjects();
+            if (GameController.GetInstance().CheckValueAllowedRay())
+            {
+                InteractionWithObjects();
+            }
         }
     }
 
@@ -43,6 +50,10 @@ public class PlayerController : MonoBehaviour
         agent_Player.SetDestination(pointForMove);
         switcherRoom.ChangeRoom(nextRoom);
     }
+
+    public void RebootCurrentRoom() => switcherRoom.ChangeRoom(switcherRoom.currentRoom);
+
+    public Premises GetCurrentRoom() => switcherRoom.currentRoom;
 
     public void InteractionWithObjects()
     {
@@ -72,14 +83,35 @@ public class PlayerController : MonoBehaviour
     {
         animator_Player.SetTrigger("isAttack");
 
-        int damage = Random.Range(1, 20);
-        //int damage = Random.Range(90, 100);
+        //int damage = Random.Range(1, 20);
+        int damage = Random.Range(90, 100);
         panel.ChangeHealthEnemy(damage);
     }
 
-    public void Block(bool value) => isBlock = value;
+    public void Block(bool value)
+    {
+        if (value)
+        {
+            animator_Player.SetTrigger("isBlock");
+        }
+
+        isBlock = value;
+    }
     public bool CheckIsBlock() => isBlock;
 
     public int GetHealthPlayer() => health;
     public void ChangeHealthPlayer(int health) => this.health += health;
+
+    public void PlayerDeath()
+    {
+        animator_Player.SetTrigger("isDeath");
+        Instantiate(finalPanel, finalPanel.transform.position, finalPanel.transform.rotation);
+        GameController.GetInstance().TurnOffMainUI();
+    }
+
+    public void PlayerWin()
+    {
+        Instantiate(finalPanel, finalPanel.transform.position, finalPanel.transform.rotation);
+        GameController.GetInstance().TurnOffMainUI();
+    }
 }

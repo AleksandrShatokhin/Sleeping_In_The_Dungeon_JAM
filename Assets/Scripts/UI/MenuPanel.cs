@@ -10,11 +10,14 @@ public class MenuPanel : MonoBehaviour
         buttonContinue.onClick.AddListener(Continue);
         buttonInventory.onClick.AddListener(CallInventory);
         buttonExit.onClick.AddListener(Exit);
+
+        GameController.GetInstance().SwitchAllowedRay(false);
     }
 
     private void Continue()
     {
         GameController.GetInstance().CloseUIPanel();
+        GameController.GetInstance().SwitchAllowedRay(true);
     }
 
     private void CallInventory()

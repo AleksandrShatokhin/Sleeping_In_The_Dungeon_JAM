@@ -5,7 +5,12 @@ using UnityEngine;
 public class Door : ObjectManager
 {
     private Animator anim_Door;
-    private bool doorIsOpen = false;
+    public bool doorIsOpen { get; private set; } = false;
+    private const string messageForPlayer = "Так дверь не открыть!";
+
+    [SerializeField] private AudioClip audioOpenDoor, audioCloseDoor;
+    public void PlayAudioOpenDoor() => GameController.GetInstance().PlayAudio(audioOpenDoor);
+    public void PlayAudioCloseDoor() => GameController.GetInstance().PlayAudio(audioCloseDoor);
 
     private void Start()
     {
@@ -22,7 +27,7 @@ public class Door : ObjectManager
     {
         if (!doorIsOpen)
         {
-            Debug.Log("Так дверь не открыть!");
+            GameController.GetInstance().OutputMessageForPlayer(messageForPlayer);
         }
     }
 }

@@ -27,6 +27,7 @@ public class RoomController
     public Room_7 room_7 = new Room_7();
     public Room_8 room_8 = new Room_8();
     public Room_9 room_9 = new Room_9();
+    public Final final = new Final();
 
     public bool DeathEnemy_1 = false;
     public bool DeathEnemy_2 = false;
@@ -108,7 +109,7 @@ public class Room_3 : Premises
     private Vector3 pointForMoveUp = new Vector3(0.0f, 0.0f, 30.0f);
     private Vector3 pointForMoveDown = new Vector3(0.0f, 0.0f, 10.0f);
     private Vector3 pointForMoveLeft = new Vector3(-7.5f, 0.0f, 20.0f);
-    //private Vector3 pointForMoveRight = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 pointForMoveRight = new Vector3(7.5f, 0.0f, 20.0f);
 
     public override void Enter()
     {
@@ -121,15 +122,20 @@ public class Room_3 : Premises
         {
             GameController.GetInstance().GetButtonLeft().SetActive(true);
         }
-        GameController.GetInstance().GetButtonRight().SetActive(true);
+        if (GameController.GetInstance().GetFinalDoor().GetComponent<Door>().doorIsOpen)
+        {
+            GameController.GetInstance().GetButtonRight().SetActive(true);
+        }
 
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetPointToMove(pointForMoveUp);
         GameController.GetInstance().GetButtonDown().GetComponent<ButtonMove>().SetPointToMove(pointForMoveDown);
         GameController.GetInstance().GetButtonLeft().GetComponent<ButtonMove>().SetPointToMove(pointForMoveLeft);
+        GameController.GetInstance().GetButtonRight().GetComponent<ButtonMove>().SetPointToMove(pointForMoveRight);
 
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetNextRoom(GameController.GetInstance().roomController.room_4);
         GameController.GetInstance().GetButtonDown().GetComponent<ButtonMove>().SetNextRoom(GameController.GetInstance().roomController.room_2);
         GameController.GetInstance().GetButtonLeft().GetComponent<ButtonMove>().SetNextRoom(GameController.GetInstance().roomController.room_6);
+        GameController.GetInstance().GetButtonRight().GetComponent<ButtonMove>().SetNextRoom(GameController.GetInstance().roomController.final);
     }
 
     public override void Exit()
@@ -145,7 +151,7 @@ public class Room_4 : Premises
 
     public override void Enter()
     {
-        if (GameController.GetInstance().roomController.DeathEnemy_4)
+        if (GameController.GetInstance().roomController.DeathEnemy_4 && GameController.GetInstance().GetRoorRoom_5().GetComponent<Door>().doorIsOpen)
         {
             GameController.GetInstance().GetButtonUp().SetActive(true);
         }
@@ -212,11 +218,14 @@ public class Room_7 : Premises
 
     public override void Enter()
     {
-        if (GameController.GetInstance().roomController.DeathEnemy_5)
+        if (GameController.GetInstance().roomController.DeathEnemy_5 && GameController.GetInstance().GetCounterFlameRoom_9() == 0)
         {
             GameController.GetInstance().GetButtonUp().SetActive(true);
         }
-        GameController.GetInstance().GetButtonDown().SetActive(true);
+        if (GameController.GetInstance().GetRoorRoom_8().GetComponent<Door>().doorIsOpen)
+        {
+            GameController.GetInstance().GetButtonDown().SetActive(true);
+        }
         GameController.GetInstance().GetButtonRight().SetActive(true);
 
         GameController.GetInstance().GetButtonUp().GetComponent<ButtonMove>().SetPointToMove(pointForMoveUp);
@@ -265,5 +274,19 @@ public class Room_9 : Premises
     public override void Exit()
     {
         ClearButtonOnScreen();
+    }
+}
+
+public class Final : Premises
+{
+    public override void Enter()
+    {
+        GameController.GetInstance().GetPlayerController().PlayerWin();
+        GameController.GetInstance().SetValueTrueIsWin();
+    }
+
+    public override void Exit()
+    {
+        
     }
 }

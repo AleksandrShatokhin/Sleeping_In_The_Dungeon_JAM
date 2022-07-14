@@ -7,7 +7,8 @@ public class FightPanel : MonoBehaviour
 {
     [SerializeField] private Button buttonAttack, buttonBlock, buttonExit;
     [SerializeField] private Slider healthPlayer, healthEnemy;
-    [SerializeField] private GameObject deathPanel;
+
+    [SerializeField] private AudioClip audioAttack, audioBlock;
 
     private PlayerController player;
     private Enemy enemy;
@@ -16,6 +17,7 @@ public class FightPanel : MonoBehaviour
     void Start()
     {
         GameController.GetInstance().TurnOffMainUI();
+        GameController.GetInstance().SwitchAllowedRay(false);
 
         player = GameController.GetInstance().GetPlayerController();
         player.RotatePlayerOnEnemy(enemy.transform);
@@ -35,18 +37,19 @@ public class FightPanel : MonoBehaviour
             healthPlayer.value -= damage / 4;
             player.ChangeHealthPlayer(-(damage / 4));
             player.Block(false);
+            GameController.GetInstance().PlayAudio(audioBlock);
         }
         else
         {
             healthPlayer.value -= damage;
             player.ChangeHealthPlayer(-damage);
             player.Block(false);
+            GameController.GetInstance().PlayAudio(audioAttack);
         }
 
         if (healthPlayer.value <= 0)
         {
-            Instantiate(deathPanel, deathPanel.transform.position, deathPanel.transform.rotation);
-            GameController.GetInstance().TurnOffMainUI();
+            player.PlayerDeath();
             Exit();
         }
     }
@@ -57,11 +60,13 @@ public class FightPanel : MonoBehaviour
         {
             healthEnemy.value -= damage;
             enemy.ChangeHealthEnemy(-damage);
+            GameController.GetInstance().PlayAudio(audioAttack);
         }
         else
         {
             healthEnemy.value -= damage / 4;
             enemy.ChangeHealthEnemy(-(damage / 4));
+            GameController.GetInstance().PlayAudio(audioBlock);
         }
 
         if (healthEnemy.value <= 0)
@@ -76,6 +81,7 @@ public class FightPanel : MonoBehaviour
     {
         GameController.GetInstance().CloseUIPanel();
         GameController.GetInstance().TurnOnMainUI();
+        GameController.GetInstance().SwitchAllowedRay(true);
     }
 
     private void ButtonAttack()
@@ -128,12 +134,18 @@ public class FightPanel : MonoBehaviour
 
             case 4:
                 GameController.GetInstance().roomController.DeathEnemy_4 = true;
-                GameController.GetInstance().GetButtonUp().SetActive(true);
+                if (GameController.GetInstance().GetRoorRoom_5().GetComponent<Door>().doorIsOpen)
+                {
+                    GameController.GetInstance().GetButtonUp().SetActive(true);
+                }
                 break;
 
             case 5:
                 GameController.GetInstance().roomController.DeathEnemy_5 = true;
-                GameController.GetInstance().GetButtonUp().SetActive(true);
+                if (GameController.GetInstance().GetCounterFlameRoom_9() == 0)
+                {
+                    GameController.GetInstance().GetButtonUp().SetActive(true);
+                }
                 break;
         }
     }

@@ -36,6 +36,46 @@ public class CellInventory : Inventory
             GameController.GetInstance().GetPlayerController().ChangeHealthPlayer(differenceHealth);
         }
 
+        if (icon.sprite.name == "RedKey-notBackground")
+        {
+            if (GameController.GetInstance().GetPlayerController().GetCurrentRoom() == GameController.GetInstance().roomController.room_7)
+            {
+                GameController.GetInstance().GetRoorRoom_8().GetComponent<Door>().OpenDoor(true);
+                GameController.GetInstance().GetButtonDown().SetActive(true);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        if (icon.sprite.name == "BlueKey-notBackground")
+        {
+            if (GameController.GetInstance().GetPlayerController().GetCurrentRoom() == GameController.GetInstance().roomController.room_4 
+                && GameController.GetInstance().roomController.DeathEnemy_4)
+            {
+                GameController.GetInstance().GetRoorRoom_5().GetComponent<Door>().OpenDoor(true);
+                GameController.GetInstance().GetButtonUp().SetActive(true);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        if (icon.sprite.name == "Heal_Blue_noBack")
+        {
+            if (GameController.GetInstance().GetPlayerController().GetCurrentRoom() == GameController.GetInstance().roomController.room_8)
+            {
+                GameController.GetInstance().GetStrangerController().StrangerStandUp();
+            }
+            else
+            {
+                return;
+            }
+
+        }
+
         icon.sprite = null;
     }
 }

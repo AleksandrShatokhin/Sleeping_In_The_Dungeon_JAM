@@ -6,6 +6,8 @@ public class Enemy : ObjectManager
 {
     private Animator anim_Enemy;
 
+    private const string messageForPlayer = "Прежде нужно найти оружие";
+
     [SerializeField] private GameObject fightPanel;
     [SerializeField] private int health;
     [SerializeField] private int id;
@@ -25,7 +27,7 @@ public class Enemy : ObjectManager
         }
         else
         {
-            Debug.Log("Прежде нужно найти оружие");
+            GameController.GetInstance().OutputMessageForPlayer(messageForPlayer);
         }
     }
 
@@ -39,14 +41,14 @@ public class Enemy : ObjectManager
             isDamage = true;
             anim_Enemy.SetTrigger("isAttack");
 
-            //int damage = Random.Range(2, 10);
-            int damage = Random.Range(50, 80);
+            int damage = Random.Range(2, 10);
+            //int damage = Random.Range(80, 100);
             panel.ChangeHealthPlayer(damage);
         }
         else
         {
             isDamage = false;
-            Debug.Log("Enemy Block");
+            anim_Enemy.SetTrigger("isBlock");
         }
 
         return isDamage;

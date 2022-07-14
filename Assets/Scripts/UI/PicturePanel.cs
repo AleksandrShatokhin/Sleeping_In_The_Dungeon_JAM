@@ -12,11 +12,13 @@ public class PicturePanel : MonoBehaviour
     [SerializeField] private GameObject fieldPassword;
     [SerializeField] private TextMeshProUGUI[] textPassword;
 
-    private const string tryPassword = "12345678";
+    private const string tryPassword = "28141327";
     private string currentPassword = "";
 
     void Start()
     {
+        GameController.GetInstance().SwitchAllowedRay(false);
+
         buttonVerify.onClick.AddListener(VerifyPassword);
         buttonClose.onClick.AddListener(ClosePanel);
 
@@ -51,18 +53,31 @@ public class PicturePanel : MonoBehaviour
     {
         if (currentPassword == tryPassword)
         {
-            Debug.Log("Правильные пароль");
+            ChangeButtonColor();
+            GameController.GetInstance().GetPictureComponent().SwitchIsOpenPicture();
         }
         else
         {
             ResetTextPasword();
             currentPassword = "";
-            Debug.Log("Неверный пароль");
         }
     }
 
     private void ClosePanel()
     {
         GameController.GetInstance().CloseUIPanel();
+        GameController.GetInstance().SwitchAllowedRay(true);
+    }
+
+    public void ChangeButtonColor()
+    {
+        button_1.image.color = Color.green;
+        button_2.image.color = Color.green;
+        button_3.image.color = Color.green;
+        button_4.image.color = Color.green;
+        button_5.image.color = Color.green;
+        button_6.image.color = Color.green;
+        button_7.image.color = Color.green;
+        button_8.image.color = Color.green;
     }
 }

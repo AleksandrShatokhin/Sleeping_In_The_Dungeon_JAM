@@ -13,6 +13,8 @@ public class MainUIController : MonoBehaviour
     [SerializeField] private Button buttonPlayerMoveUp, buttonPlayerMoveDown, buttonPlayerMoveLeft, buttonPlayerMoveRight;
     [SerializeField] private Button buttonCallMenu;
     [SerializeField] private Button buttonCallInventory;
+    [SerializeField] private TextMeshProUGUI centerText;
+    
 
     private void Start()
     {
@@ -22,6 +24,8 @@ public class MainUIController : MonoBehaviour
         buttonPlayerMoveRight.onClick.AddListener(PlayerMoveRight);
         buttonCallMenu.onClick.AddListener(CallMenu);
         buttonCallInventory.onClick.AddListener(CallInventory);
+
+        centerText.text = null;
     }
 
     private void PlayerMoveUp()
@@ -65,6 +69,11 @@ public class MainUIController : MonoBehaviour
         buttonPlayerMoveDown.image.enabled = value;
         buttonPlayerMoveLeft.image.enabled = value;
         buttonPlayerMoveRight.image.enabled = value;
+
+        buttonCallMenu.gameObject.SetActive(value);
+        buttonCallInventory.gameObject.SetActive(value);
+
+        GameController.GetInstance().SwitchAllowedRay(value);
     }
 
     private IEnumerator SwitchActiveButtonMove()
@@ -75,5 +84,19 @@ public class MainUIController : MonoBehaviour
 
         TurnOffButtonMove(true);
         StopAllCoroutines();
+    }
+
+    public void SetCenterText(string text)
+    {
+        centerText.text = text;
+
+        StartCoroutine(CenterTextNull());
+    }
+
+    private IEnumerator CenterTextNull()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        centerText.text = null;
     }
 }
