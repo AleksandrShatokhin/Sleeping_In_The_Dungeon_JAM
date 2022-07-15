@@ -12,6 +12,8 @@ public class PicturePanel : MonoBehaviour
     [SerializeField] private GameObject fieldPassword;
     [SerializeField] private TextMeshProUGUI[] textPassword;
 
+    [SerializeField] private AudioClip audioUseButton;
+
     private const string tryPassword = "28141327";
     private string currentPassword = "";
 
@@ -38,6 +40,7 @@ public class PicturePanel : MonoBehaviour
     {
         TextMeshProUGUI textComponent = go.GetComponentInChildren<TextMeshProUGUI>();
 
+        GameController.GetInstance().PlayAudio(audioUseButton);
         for (int i = 0; i < textPassword.Length; i++)
         {
             if (textPassword[i].text == null)

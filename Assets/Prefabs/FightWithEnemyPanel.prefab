@@ -147,10 +147,10 @@ RectTransform:
   m_Father: {fileID: 9006061127055877005}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -850}
-  m_SizeDelta: {x: -830, y: -1820}
+  m_AnchorMin: {x: 0.38500002, y: 0.031166669}
+  m_AnchorMax: {x: 0.615, y: 0.083000004}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2002705515118655610
 CanvasRenderer:
@@ -381,10 +381,10 @@ RectTransform:
   m_Father: {fileID: 9006061127055877005}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 200, y: -450}
-  m_SizeDelta: {x: -775, y: -1520}
+  m_AnchorMin: {x: 0.5435185, y: 0.16152085}
+  m_AnchorMax: {x: 0.82600003, y: 0.37}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4074136076120389191
 CanvasRenderer:
@@ -561,10 +561,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 72
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -638,10 +638,10 @@ RectTransform:
   m_Father: {fileID: 9006061127055877005}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -730}
-  m_SizeDelta: {x: -280, y: -1820}
+  m_AnchorMin: {x: 0.1294815, y: 0.093166664}
+  m_AnchorMax: {x: 0.87000006, y: 0.14600001}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1620560796381851971
 MonoBehaviour:
@@ -729,10 +729,10 @@ RectTransform:
   m_Father: {fileID: 9006061127055877005}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 820}
-  m_SizeDelta: {x: -280, y: -1820}
+  m_AnchorMin: {x: 0.1294815, y: 0.901}
+  m_AnchorMax: {x: 0.87000006, y: 0.95300007}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5095482943302709378
 MonoBehaviour:
@@ -932,10 +932,10 @@ RectTransform:
   m_Father: {fileID: 9006061127055877005}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -450}
-  m_SizeDelta: {x: -775, y: -1520}
+  m_AnchorMin: {x: 0.17400001, y: 0.16152085}
+  m_AnchorMax: {x: 0.45600003, y: 0.37}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &150688656846568037
 CanvasRenderer:
@@ -1254,6 +1254,5 @@ MonoBehaviour:
   buttonExit: {fileID: 8165802679005117245}
   healthPlayer: {fileID: 1620560796381851971}
   healthEnemy: {fileID: 5095482943302709378}
-  deathPanel: {fileID: 4982634104672410108, guid: b18d0fa0cd808bc4597c996448f294dd, type: 3}
   audioAttack: {fileID: 8300000, guid: 14d4167795e035f45bee31ab27787ce1, type: 3}
   audioBlock: {fileID: 8300000, guid: 244d108c960bd9949ae9f526920be0de, type: 3}

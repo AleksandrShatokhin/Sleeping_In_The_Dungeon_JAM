@@ -9,6 +9,7 @@ public class ChestPanel : MonoBehaviour
     [SerializeField] Button buttonItemLeft, buttonItemRight;
     private Image iconLeftItem, iconRightItem;
     private GameObject chest;
+    [SerializeField] private AudioClip audioUseCell;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class ChestPanel : MonoBehaviour
         GameController.GetInstance().GetInventory().GetComponent<Inventory>().SetItemInCell(iconLeftItem.sprite);
         iconLeftItem.sprite = null;
         chest.GetComponent<Chest>().ChangeIsLeftCellNull();
+        GameController.GetInstance().PlayAudio(audioUseCell);
     }
 
     private void TakeRightItem()
@@ -45,6 +47,7 @@ public class ChestPanel : MonoBehaviour
         GameController.GetInstance().GetInventory().GetComponent<Inventory>().SetItemInCell(iconRightItem.sprite);
         iconRightItem.sprite = null;
         chest.GetComponent<Chest>().ChangeIsRightCellNull();
+        GameController.GetInstance().PlayAudio(audioUseCell);
     }
 
     private void Exit()

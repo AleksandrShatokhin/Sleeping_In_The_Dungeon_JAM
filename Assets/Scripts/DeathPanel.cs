@@ -5,7 +5,7 @@ using TMPro;
 public class DeathPanel : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
-    private const string winText = "You Win";
+    private const string winText = "The End?";
     private const string DeathText = "You Dead";
 
     private void Start()

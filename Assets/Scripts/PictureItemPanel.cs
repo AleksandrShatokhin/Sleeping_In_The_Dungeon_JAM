@@ -6,6 +6,8 @@ public class PictureItemPanel : MonoBehaviour
     [SerializeField] Button buttonExit;
     [SerializeField] Button buttonItem;
 
+    [SerializeField] private AudioClip audioUseItem;
+
     private Image iconItem;
 
     private void Start()
@@ -28,6 +30,7 @@ public class PictureItemPanel : MonoBehaviour
         GameController.GetInstance().GetInventory().GetComponent<Inventory>().SetItemInCell(iconItem.sprite);
         iconItem.sprite = null;
         GameController.GetInstance().GetPictureComponent().SwitchIsPlayerTakeItem();
+        GameController.GetInstance().PlayAudio(audioUseItem);
     }
 
     private void Exit()

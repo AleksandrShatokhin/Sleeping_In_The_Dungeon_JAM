@@ -8,6 +8,7 @@ public class CellInventory : Inventory
     private Button buttonCell;
 
     [SerializeField] private Image icon;
+    [SerializeField] private AudioClip audioUseCell;
 
     private void Start()
     {
@@ -76,6 +77,7 @@ public class CellInventory : Inventory
 
         }
 
+        GameController.GetInstance().PlayAudio(audioUseCell);
         icon.sprite = null;
     }
 }

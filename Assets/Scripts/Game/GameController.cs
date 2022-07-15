@@ -146,4 +146,5 @@ public class GameController : MonoBehaviour
     public void OutputMessageForPlayer(string message) => GetMainUIController().SetCenterText(message);
 
     public void PlayAudio(AudioClip audio) => audioSource.PlayOneShot(audio, 1.0f);
+    public void PlayAudio(AudioClip audio, float volume) => audioSource.PlayOneShot(audio, volume);
 }

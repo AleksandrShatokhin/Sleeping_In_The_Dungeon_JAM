@@ -7,7 +7,7 @@ public class Torch : ObjectManager
     [SerializeField] private int numberTorch;
     public int GetNumberTorch() => numberTorch;
 
-    [SerializeField] private AudioClip audioFlame;
+    [SerializeField] private AudioClip audioFlame, audioFlameOff;
 
     [SerializeField] private ParticleSystem ps_Flame;
     [SerializeField] Light lightFlame;
@@ -51,6 +51,7 @@ public class Torch : ObjectManager
             ps_Flame.Stop();
             lightFlame.enabled = false;
             isFlame = false;
+            GameController.GetInstance().PlayAudio(audioFlameOff);
 
             if (this.gameObject.name == "TorchRoom_1_Right" || this.gameObject.name == "TorchRoom_1_Left")
             {

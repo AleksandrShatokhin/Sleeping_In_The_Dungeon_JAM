@@ -8,7 +8,6 @@ public class MenuPanel : MonoBehaviour
     private void Start()
     {
         buttonContinue.onClick.AddListener(Continue);
-        buttonInventory.onClick.AddListener(CallInventory);
         buttonExit.onClick.AddListener(Exit);
 
         GameController.GetInstance().SwitchAllowedRay(false);
@@ -20,13 +19,8 @@ public class MenuPanel : MonoBehaviour
         GameController.GetInstance().SwitchAllowedRay(true);
     }
 
-    private void CallInventory()
-    {
-
-    }
-
     private void Exit()
     {
-
+        Application.Quit();
     }
 }

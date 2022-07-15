@@ -6,7 +6,8 @@ public class Door : ObjectManager
 {
     private Animator anim_Door;
     public bool doorIsOpen { get; private set; } = false;
-    private const string messageForPlayer = "Так дверь не открыть!";
+    private const string messageForPlayer_RU = "Так дверь не открыть!";
+    private const string messageForPlayer_EN = "You can't open the door like that!";
 
     [SerializeField] private AudioClip audioOpenDoor, audioCloseDoor;
     public void PlayAudioOpenDoor() => GameController.GetInstance().PlayAudio(audioOpenDoor);
@@ -27,7 +28,18 @@ public class Door : ObjectManager
     {
         if (!doorIsOpen)
         {
-            GameController.GetInstance().OutputMessageForPlayer(messageForPlayer);
+            GameController.GetInstance().OutputMessageForPlayer(messageForPlayer_EN);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (this.gameObject.name == "Door_Room_3-Final")
+        {
+            if (other.gameObject.name == "Stranger")
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }

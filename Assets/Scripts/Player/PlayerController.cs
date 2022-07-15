@@ -49,6 +49,15 @@ public class PlayerController : MonoBehaviour
     {
         agent_Player.SetDestination(pointForMove);
         switcherRoom.ChangeRoom(nextRoom);
+        animator_Player.SetBool("isRun", true);
+    }
+
+    public void CheckHasPath()
+    {
+        if (!agent_Player.hasPath)
+        {
+            animator_Player.SetBool("isRun", false);
+        }
     }
 
     public void RebootCurrentRoom() => switcherRoom.ChangeRoom(switcherRoom.currentRoom);
