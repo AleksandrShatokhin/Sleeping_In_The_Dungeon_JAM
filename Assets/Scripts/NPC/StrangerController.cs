@@ -45,7 +45,16 @@ public class StrangerController : ObjectManager
         }
         else
         {
-            GameController.GetInstance().OutputMessageForPlayer(messageForPlayer_EN);
+            if (LanguageController.GetLanguage() == (int)ListLanguage.English)
+            {
+                GameController.GetInstance().OutputMessageForPlayer(messageForPlayer_EN);
+            }
+
+            if (LanguageController.GetLanguage() == (int)ListLanguage.Russian)
+            {
+                GameController.GetInstance().OutputMessageForPlayer(messageForPlayer_RU);
+            }
+
         }
     }
 }

@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FightPanel : MonoBehaviour
 {
+    private const string buttonExitText_RU = "Выйти";
+    private const string buttonExitText_EN = "Get out";
+
     [SerializeField] private Button buttonAttack, buttonBlock, buttonExit;
     [SerializeField] private Slider healthPlayer, healthEnemy;
 
@@ -16,6 +20,8 @@ public class FightPanel : MonoBehaviour
 
     void Start()
     {
+        Language(LanguageController.GetLanguage());
+
         GameController.GetInstance().TurnOffMainUI();
         GameController.GetInstance().SwitchAllowedRay(false);
 
@@ -28,6 +34,19 @@ public class FightPanel : MonoBehaviour
         buttonAttack.onClick.AddListener(ButtonAttack);
         buttonBlock.onClick.AddListener(ButtonBlock);
         buttonExit.onClick.AddListener(Exit);
+    }
+
+    private void Language(int language)
+    {
+        if (language == (int)ListLanguage.English)
+        {
+            buttonExit.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonExitText_EN;
+        }
+
+        if (language == (int)ListLanguage.Russian)
+        {
+            buttonExit.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonExitText_RU;
+        }
     }
 
     public void ChangeHealthPlayer(int damage)

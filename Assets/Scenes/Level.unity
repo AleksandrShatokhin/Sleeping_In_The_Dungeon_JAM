@@ -27365,6 +27365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 45082197}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &431477024
@@ -33368,6 +33369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 713919619}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &542343406
@@ -40364,6 +40366,7 @@ MonoBehaviour:
   - {fileID: 1797244900}
   - {fileID: 1109562441}
   - {fileID: 1445498110}
+  mainText: {fileID: 862461040}
 --- !u!1 &694143645
 GameObject:
   m_ObjectHideFlags: 0
@@ -62832,6 +62835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 677397589}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &1060889639 stripped
@@ -63426,6 +63430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 122521845}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &1114384258
@@ -64145,6 +64150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 1859466256}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &1194667003
@@ -85732,6 +85738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 1184684043}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1001 &1469296921
@@ -86240,6 +86247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 1264780832}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &1510927811
@@ -86442,6 +86450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 973666447}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &1521433486
@@ -104932,6 +104941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 1028230362}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &1799247342
@@ -116380,6 +116390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 1574211597}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &1995767499 stripped
@@ -126766,6 +126777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 1825327813}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}
 --- !u!1 &2116299128
@@ -127620,5 +127632,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonCloseInventory: {fileID: 0}
   cells: []
+  mainText: {fileID: 0}
   icon: {fileID: 1413275790}
   audioUseCell: {fileID: 8300000, guid: 6b75e56660f6c614eba6f8396e694121, type: 3}

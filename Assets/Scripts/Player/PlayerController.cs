@@ -92,8 +92,7 @@ public class PlayerController : MonoBehaviour
     {
         animator_Player.SetTrigger("isAttack");
 
-        //int damage = Random.Range(1, 20);
-        int damage = Random.Range(90, 100);
+        int damage = Random.Range(1, 20);
         panel.ChangeHealthEnemy(damage);
     }
 

@@ -6,6 +6,9 @@ using TMPro;
 
 public class MainUIController : MonoBehaviour
 {
+    private const string buttonCallInventoryText_RU = "Инвентарь";
+    private const string buttonCallInventoryText_EN = "Inventory";
+
     [SerializeField] private PlayerController playerController;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject inventory;
@@ -18,6 +21,8 @@ public class MainUIController : MonoBehaviour
 
     private void Start()
     {
+        LanguageMenu(LanguageController.GetLanguage());
+
         buttonPlayerMoveUp.onClick.AddListener(PlayerMoveUp);
         buttonPlayerMoveDown.onClick.AddListener(PlayerMoveDown);
         buttonPlayerMoveLeft.onClick.AddListener(PlayerMoveLeft);
@@ -98,5 +103,18 @@ public class MainUIController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         centerText.text = null;
+    }
+
+    private void LanguageMenu(int language)
+    {
+        if (language == (int)ListLanguage.English)
+        {
+            buttonCallInventory.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonCallInventoryText_EN;
+        }
+
+        if (language == (int)ListLanguage.Russian)
+        {
+            buttonCallInventory.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonCallInventoryText_RU;
+        }
     }
 }

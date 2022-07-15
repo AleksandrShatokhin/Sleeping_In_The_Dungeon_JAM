@@ -6,6 +6,11 @@ using TMPro;
 
 public class PicturePanel : MonoBehaviour
 {
+    private const string buttonVerifyText_RU = "Проверить пароль";
+    private const string buttonVerifyText_EN = "Verify password";
+    private const string buttonCloseText_RU = "Закрыть панель";
+    private const string buttonCloseText_EN = "Close panel";
+
     [SerializeField] private Button button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8;
     [SerializeField] private Button buttonVerify, buttonClose;
 
@@ -19,6 +24,8 @@ public class PicturePanel : MonoBehaviour
 
     void Start()
     {
+        Language(LanguageController.GetLanguage());
+
         GameController.GetInstance().SwitchAllowedRay(false);
 
         buttonVerify.onClick.AddListener(VerifyPassword);
@@ -82,5 +89,20 @@ public class PicturePanel : MonoBehaviour
         button_6.image.color = Color.green;
         button_7.image.color = Color.green;
         button_8.image.color = Color.green;
+    }
+
+    private void Language(int language)
+    {
+        if (language == (int)ListLanguage.English)
+        {
+            buttonVerify.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonVerifyText_EN;
+            buttonClose.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonCloseText_EN;
+        }
+
+        if (language == (int)ListLanguage.Russian)
+        {
+            buttonVerify.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonVerifyText_RU;
+            buttonClose.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonCloseText_RU;
+        }
     }
 }

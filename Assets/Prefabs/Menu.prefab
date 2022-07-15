@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonContinue: {fileID: 5075936538606195913}
-  buttonInventory: {fileID: 0}
   buttonExit: {fileID: 5075936537738712274}
+  textMenu: {fileID: 5075936538004159105}
 --- !u!1 &5075936537738712272
 GameObject:
   m_ObjectHideFlags: 0

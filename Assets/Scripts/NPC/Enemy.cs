@@ -6,7 +6,8 @@ public class Enemy : ObjectManager
 {
     private Animator anim_Enemy;
 
-    private const string messageForPlayer = "Прежде нужно найти оружие";
+    private const string messageForPlayer_RU = "Прежде нужно найти оружие";
+    private const string messageForPlayer_EN = "First you need to find a weapon";
 
     [SerializeField] private GameObject fightPanel;
     [SerializeField] private int health;
@@ -27,7 +28,15 @@ public class Enemy : ObjectManager
         }
         else
         {
-            GameController.GetInstance().OutputMessageForPlayer(messageForPlayer);
+            if (LanguageController.GetLanguage() == (int)ListLanguage.English)
+            {
+                GameController.GetInstance().OutputMessageForPlayer(messageForPlayer_EN);
+            }
+
+            if (LanguageController.GetLanguage() == (int)ListLanguage.Russian)
+            {
+                GameController.GetInstance().OutputMessageForPlayer(messageForPlayer_RU);
+            }
         }
     }
 

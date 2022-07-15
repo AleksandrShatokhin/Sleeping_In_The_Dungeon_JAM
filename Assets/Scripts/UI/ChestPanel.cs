@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ChestPanel : MonoBehaviour
 {
+    private const string buttonTakeAllText_RU = "Взять всё";
+    private const string buttonTakeAllText_EN = "Take All";
+    private const string buttonExitText_RU = "Выход";
+    private const string buttonExitText_EN = "Exit";
+
     [SerializeField] Button buttonTakeAll, buttonExit;
     [SerializeField] Button buttonItemLeft, buttonItemRight;
     private Image iconLeftItem, iconRightItem;
@@ -13,6 +19,7 @@ public class ChestPanel : MonoBehaviour
 
     private void Start()
     {
+        LanguageButtons(LanguageController.GetLanguage());
         GameController.GetInstance().SwitchAllowedRay(false);
 
         buttonTakeAll.onClick.AddListener(TakeAll);
@@ -54,5 +61,20 @@ public class ChestPanel : MonoBehaviour
     {
         GameController.GetInstance().CloseUIPanel();
         GameController.GetInstance().SwitchAllowedRay(true);
+    }
+
+    private void LanguageButtons(int language)
+    {
+        if (language == (int)ListLanguage.English)
+        {
+            buttonTakeAll.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonTakeAllText_EN;
+            buttonExit.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonExitText_EN;
+        }
+
+        if (language == (int)ListLanguage.Russian)
+        {
+            buttonTakeAll.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonTakeAllText_RU;
+            buttonExit.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonExitText_RU;
+        }
     }
 }
